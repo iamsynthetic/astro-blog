@@ -9,6 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.11.0"
-  }
+    "@astrojs/netlify": "^6.4.1",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.11.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2",
+    "prettier-plugin-astro": "0.14.1"
+  },
+  "packageManager": "pnpm@9.1.0+sha1.217063ce3fcbf44f3051666f38b810f1ddefee4a"
 }
