@@ -1,8 +1,18 @@
 ---
+export const prerender = true;
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/layout.astro";
 import { getEntry } from "astro:content";
 import { formatDate } from "../../utils";
 import Tags from "../../components/Tags.astro";
+
+export async function getStaticPaths() {
+    const allArticles: CollectionEntry<"blog">[] = await getCollection("blog");
+    return allArticles.map((entry) => ({
+        params: { slug: entry.slug },
+    }));
+}
 
 const { slug } = Astro.params;
 
@@ -27,7 +37,7 @@ const { Content } = await entry.render();
         <div class="flex flex-wrap gap-2 mb-6">
             <Tags tags={entry.data.tags} />
         </div>
-        <img src={"/images/" + entry.data.image} alt="Article Image" class="w-full h-auto rounded-xl mb-6" />
+        <img src={"/images/" + entry.data.image} alt="Article" class="w-full h-auto rounded-xl mb-6" />
         <Content />
     </article>
 </Layout>
